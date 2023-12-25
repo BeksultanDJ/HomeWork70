@@ -45,23 +45,15 @@ const Quotes: React.FC = () => {
         }
     };
 
-    const handleCategoryClick = (category: string) => {
-        if (category === 'All') {
-            setFilteredQuotes(quotes);
-        } else {
-            setSelectedCategory(category);
-        }
-    };
-
     return (
         <div className="container">
             <div className="quotes">
-                <h2>Цитаты</h2>
                 {filteredQuotes.map((quote) => (
                     <div className="quoteCard" key={quote.id}>
-                        <div>
+                        <div className="cardInfo">
+
+                            <p>{quote.name}</p>
                             <p>"{quote.phone}"</p>
-                            <p>— {quote.name}</p>
                         </div>
                         <div>
                             <button onClick={() => handleDelete(quote.id)}>Удалить</button>
