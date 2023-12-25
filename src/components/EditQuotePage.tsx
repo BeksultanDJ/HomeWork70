@@ -2,11 +2,11 @@ import  { useState } from 'react';
 import axios from 'axios';
 import {NavLink} from "react-router-dom";
 
-const EditQuote = ({ id, initialCategory = '', initialName = '', initialText = '' }) => {
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
-    const [photo, setPhoto] = useState('');
+const EditQuote = ({ id, initialName = '', initialPhone = '', initialEmail = '', initialPhoto = '' }) => {
+    const [name, setName] = useState(initialName);
+    const [phone, setPhone] = useState(initialPhone);
+    const [email, setEmail] = useState(initialEmail);
+    const [photo, setPhoto] = useState(initialPhoto);
 
     const handleSubmit = () => {
         if (!name || !phone || !photo || !email) {
