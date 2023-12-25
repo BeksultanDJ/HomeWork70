@@ -9,7 +9,7 @@ const EditContact = ({ initialName = '', initialPhone = '', initialEmail = '', i
     const [photo, setPhoto] = useState(initialPhoto);
 
     const handleSubmit = () => {
-        if (!name || !phone || !photo || !email) {
+        if (!name) {
             alert('Вы ничего не ввели');
             return;
         }
