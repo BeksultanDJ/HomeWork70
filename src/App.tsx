@@ -1,8 +1,8 @@
 import './App.css'
 import { Route, Routes } from "react-router-dom";
-import NewContacts from "./components/NewQuotes.tsx";
+import NewContacts from "./components/NewContact.tsx";
 import Toolbar from "./components/TollBar/ToolBar.tsx";
-import EditQuote from "./components/EditQuotePage.tsx";
+import EditContact from "./components/EditContactPage.tsx";
 import Contacts from "./components/Home.tsx";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Contacts/>}/>
               <Route path="/NewContacts" element={<NewContacts />} />
-              <Route path="/:id/EditQuote" element={<EditQuote/>} />
+              <Route path="/:id/EditQuote" element={<EditContact/>} />
           </Routes>
       </div>
     </>

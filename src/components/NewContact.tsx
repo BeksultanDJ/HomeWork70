@@ -30,31 +30,31 @@ const NewContacts = () => {
     };
 
     return (
-        <div className="quote-card container">
+        <div className="contact-card container">
             <h3>Create new contact</h3>
             <input
-                className="authorInput"
+                className="nameInput"
                 type="text"
-                placeholder="Author"
+                placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
             <input
-                className="authorInput"
+                className="phoneInput"
                 type="text"
                 placeholder="Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
             />
             <input
-                className="authorInput"
+                className="emailInput"
                 type="text"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
             <input
-                className="authorInput"
+                className="photoInput"
                 type="text"
                 placeholder="Photo Link"
                 value={photo}

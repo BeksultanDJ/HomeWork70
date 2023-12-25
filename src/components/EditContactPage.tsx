@@ -2,7 +2,7 @@ import  { useState } from 'react';
 import axios from 'axios';
 import {NavLink} from "react-router-dom";
 
-const EditQuote = ({ id, initialName = '', initialPhone = '', initialEmail = '', initialPhoto = '' }) => {
+const EditContact = ({ initialName = '', initialPhone = '', initialEmail = '', initialPhoto = '' }) => {
     const [name, setName] = useState(initialName);
     const [phone, setPhone] = useState(initialPhone);
     const [email, setEmail] = useState(initialEmail);
@@ -31,31 +31,31 @@ const EditQuote = ({ id, initialName = '', initialPhone = '', initialEmail = '',
     };
 
     return (
-        <div className="quote-card container">
+        <div className="contact-card container">
             <h3>Create new contact</h3>
             <input
-                className="authorInput"
+                className="nameInput"
                 type="text"
-                placeholder="Author"
+                placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
             <input
-                className="authorInput"
+                className="phoneInput"
                 type="text"
                 placeholder="Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
             />
             <input
-                className="authorInput"
+                className="emailInput"
                 type="text"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
             <input
-                className="authorInput"
+                className="photoInput"
                 type="text"
                 placeholder="Photo Link"
                 value={photo}
@@ -67,4 +67,4 @@ const EditQuote = ({ id, initialName = '', initialPhone = '', initialEmail = '',
     );
 };
 
-export default EditQuote;
+export default EditContact;
