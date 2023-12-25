@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import {NavLink} from "react-router-dom";
 
 const NewQuotes = () => {
     const [name, setName] = useState('');
@@ -60,7 +61,7 @@ const NewQuotes = () => {
                 onChange={(e) => setPhoto(e.target.value)}
             />
 
-            <button onClick={handleSubmit}>Сохранить</button>
+          <NavLink to="/"><button onClick={handleSubmit}>Сохранить</button></NavLink>
         </div>
     );
 };

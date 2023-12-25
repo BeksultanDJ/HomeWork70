@@ -1,5 +1,6 @@
 import  { useState } from 'react';
 import axios from 'axios';
+import {NavLink} from "react-router-dom";
 
 const EditQuote = ({ id, initialCategory = '', initialAuthor = '', initialText = '' }) => {
     const [category, setCategory] = useState(initialCategory);
@@ -50,7 +51,7 @@ const EditQuote = ({ id, initialCategory = '', initialAuthor = '', initialText =
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             ></textarea>
-            <button onClick={handleSubmit}>Сохранить изменения</button>
+          <NavLink to="/"><button onClick={handleSubmit}>Сохранить изменения</button></NavLink>
         </div>
     );
 };
