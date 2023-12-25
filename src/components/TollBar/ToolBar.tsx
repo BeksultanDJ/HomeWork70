@@ -9,14 +9,11 @@ const Toolbar: React.FC = () => {
             <header>
                 <div className="container">
                     <div className="header-top">
-                        <strong>Quotes Central</strong>
+                        <strong>Contacts</strong>
                         <nav>
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <NavLink className="navLinks" to="/">Quotes</NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink className="navLinks" to="/NewQuotes">New Quotes</NavLink>
+                                    <NavLink className="navLinks" to="/NewQuotes">Add new contact</NavLink>
                                 </li>
                             </ul>
                         </nav>
