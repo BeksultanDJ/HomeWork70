@@ -2,21 +2,23 @@ import  { useState } from 'react';
 import axios from 'axios';
 import {NavLink} from "react-router-dom";
 
-const EditQuote = ({ id, initialCategory = '', initialAuthor = '', initialText = '' }) => {
-    const [category, setCategory] = useState(initialCategory);
-    const [author, setAuthor] = useState(initialAuthor);
-    const [text, setText] = useState(initialText);
+const EditQuote = ({ id, initialCategory = '', initialName = '', initialText = '' }) => {
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [photo, setPhoto] = useState('');
 
     const handleSubmit = () => {
-        if (!category || !author || !text) {
+        if (!name || !phone || !photo || !email) {
             alert('Вы ничего не ввели');
             return;
         }
 
         const updatedQuote = {
-            author: author,
-            category: category,
-            text: text
+            name: name,
+            phone: phone,
+            email: email,
+            photo: photo,
         };
 
         axios.put(`https://controll-17843-default-rtdb.europe-west1.firebasedatabase.app/quotes/${id}.json`, updatedQuote)
@@ -30,28 +32,37 @@ const EditQuote = ({ id, initialCategory = '', initialAuthor = '', initialText =
 
     return (
         <div className="quote-card container">
-            <h3>Edit quote</h3>
-            <input
-                type="text"
-                placeholder="Category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-            />
+            <h3>Create new contact</h3>
             <input
                 className="authorInput"
                 type="text"
                 placeholder="Author"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
             />
-            <textarea
-                cols="40"
-                rows="5"
-                placeholder="Quote text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            ></textarea>
-          <NavLink to="/"><button onClick={handleSubmit}>Сохранить изменения</button></NavLink>
+            <input
+                className="authorInput"
+                type="text"
+                placeholder="Phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+            />
+            <input
+                className="authorInput"
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+                className="authorInput"
+                type="text"
+                placeholder="Photo Link"
+                value={photo}
+                onChange={(e) => setPhoto(e.target.value)}
+            />
+
+            <NavLink to="/"><button onClick={handleSubmit}>Сохранить изменения</button></NavLink>
         </div>
     );
 };
