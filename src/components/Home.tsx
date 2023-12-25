@@ -4,28 +4,19 @@ import { NavLink } from 'react-router-dom';
 
 interface Quote {
     id: string;
-    author: string;
-    category: string;
-    text: string;
+    name: string;
+    phone: number;
 }
 
 const Quotes: React.FC = () => {
     const [quotes, setQuotes] = useState<Quote[]>([]);
     const [filteredQuotes, setFilteredQuotes] = useState<Quote[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<string>('');
 
     useEffect(() => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        if (selectedCategory) {
-            const filtered = quotes.filter((quote) => quote.category === selectedCategory);
-            setFilteredQuotes(filtered);
-        } else {
-            setFilteredQuotes(quotes);
-        }
-    }, [selectedCategory, quotes]);
+
 
     const fetchData = async () => {
         try {
@@ -64,24 +55,13 @@ const Quotes: React.FC = () => {
 
     return (
         <div className="container">
-            <div className="sidebar">
-                <h3>Categories</h3>
-                <ul>
-                    <li className="sidebarElems" onClick={() => handleCategoryClick('All')}>All</li>
-                    <li className="sidebarElems" onClick={() => handleCategoryClick('Star Wars')}>Star Wars</li>
-                    <li className="sidebarElems" onClick={() => handleCategoryClick('Famous people')}>Famous people</li>
-                    <li className="sidebarElems" onClick={() => handleCategoryClick('Saying')}>Saying</li>
-                    <li className="sidebarElems" onClick={() => handleCategoryClick('Humour')}>Humour</li>
-                    <li className="sidebarElems" onClick={() => handleCategoryClick('Motivational')}>Motivational</li>
-                </ul>
-            </div>
             <div className="quotes">
                 <h2>Цитаты</h2>
                 {filteredQuotes.map((quote) => (
                     <div className="quoteCard" key={quote.id}>
                         <div>
-                            <p>"{quote.text}"</p>
-                            <p>— {quote.author}</p>
+                            <p>"{quote.phone}"</p>
+                            <p>— {quote.name}</p>
                         </div>
                         <div>
                             <button onClick={() => handleDelete(quote.id)}>Удалить</button>
