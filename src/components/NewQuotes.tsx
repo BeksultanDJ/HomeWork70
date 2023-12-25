@@ -2,54 +2,64 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const NewQuotes = () => {
-    const [category, setCategory] = useState('');
-    const [author, setAuthor] = useState('');
-    const [text, setText] = useState('');
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [photo, setPhoto] = useState('');
 
     const handleSubmit = () => {
         const newQuote = {
-            author: author,
-            category: category,
-            text: text
+            name: name,
+            phone: phone,
+            email: email,
+            photo: photo,
         };
 
         axios.post('https://controll-17843-default-rtdb.europe-west1.firebasedatabase.app/quotes.json', newQuote)
             .then(response => {
-                console.log('Цитата успешно отправлена!', response.data);
-                setCategory('');
-                setAuthor('');
-                setText('');
+                console.log('Данные успешно отправлены!', response.data);
+                setName('');
+                setPhone('');
+                setEmail('');
+                setPhoto('');
             })
             .catch(error => {
-                console.error('Ошибка при отправке цитаты:', error);
+                console.error('Ошибка при отправке данных:', error);
             });
     };
 
     return (
         <div className="quote-card container">
-            <h3>Submit new quote</h3>
-            <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                <option value="">Select a category</option>
-                <option value="Star Wars">Star Wars</option>
-                <option value="Famous people">Famous people</option>
-                <option value="Saying">Saying</option>
-                <option value="Humour">Humour</option>
-                <option value="Motivational">Motivational</option>
-            </select>
+            <h3>Create new contact</h3>
             <input
                 className="authorInput"
                 type="text"
                 placeholder="Author"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
             />
-            <textarea
-                cols="40"
-                rows="5"
-                placeholder="Quote text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            ></textarea>
+            <input
+                className="authorInput"
+                type="text"
+                placeholder="Phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+            />
+            <input
+                className="authorInput"
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+                className="authorInput"
+                type="text"
+                placeholder="Photo Link"
+                value={photo}
+                onChange={(e) => setPhoto(e.target.value)}
+            />
+
             <button onClick={handleSubmit}>Сохранить</button>
         </div>
     );
