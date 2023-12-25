@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
-interface Quote {
+interface Contact {
     id: string;
     name: string;
     phone: number;
+    photo: string;
 }
 
-const Quotes: React.FC = () => {
-    const [quotes, setQuotes] = useState<Quote[]>([]);
-    const [filteredQuotes, setFilteredQuotes] = useState<Quote[]>([]);
+const Contacts: React.FC = () => {
+    const [contacts, setContacts] = useState<Contact[]>([]);
+    const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
 
     useEffect(() => {
         fetchData();
@@ -22,43 +23,45 @@ const Quotes: React.FC = () => {
         try {
             const response = await axios.get('https://controll-17843-default-rtdb.europe-west1.firebasedatabase.app/quotes.json');
             if (response.data) {
-                const quotesArray: Quote[] = Object.entries(response.data).map(([id, quote]: [string, any]) => ({
+                const contactsArray: Contact[] = Object.entries(response.data).map(([id, contact]: [string, any]) => ({
                     id,
-                    ...quote,
+                    ...contact,
                 }));
-                setQuotes(quotesArray);
-                setFilteredQuotes(quotesArray);
+                setContacts(contactsArray);
+                setFilteredContacts(contactsArray);
             }
         } catch (error) {
-            console.error('Ошибка при получении цитат:', error);
+            console.error('Ошибка при получении контакта:', error);
         }
     };
 
     const handleDelete = async (id: string) => {
         try {
             await axios.delete(`https://controll-17843-default-rtdb.europe-west1.firebasedatabase.app/quotes/${id}.json`);
-            const updatedQuotes = quotes.filter((quote) => quote.id !== id);
-            setQuotes(updatedQuotes);
-            setFilteredQuotes(updatedQuotes);
+            const updatedQuotes = contacts.filter((contact) => contact.id !== id);
+            setContacts(updatedQuotes);
+            setFilteredContacts(updatedQuotes);
         } catch (error) {
-            console.error('Ошибка при удалении цитаты:', error);
+            console.error('Ошибка при удалении контакта:', error);
         }
     };
+
+    const defaultPhotoUrl = 'https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249_1280.png';
 
     return (
         <div className="container">
             <div className="quotes">
-                {filteredQuotes.map((quote) => (
-                    <div className="quoteCard" key={quote.id}>
+                {filteredContacts.map((contact) => (
+                    <div className="quoteCard" key={contact.id}>
                         <div className="cardInfo">
-
-                            <p>{quote.name}</p>
-                            <p>"{quote.phone}"</p>
+                            <img src={contact.photo || defaultPhotoUrl} alt={`${contact.name} photo`} />
+                            <p>{contact.name}</p>
+                            <p>"{contact.phone}"</p>
                         </div>
                         <div>
-                            <button onClick={() => handleDelete(quote.id)}>Удалить</button>
+                            <button onClick={() => handleDelete(contact.id)}>Удалить</button>
                             <button className="cardBtn">
-                                <NavLink className="cardLinks" to={`/${quote.id}/EditQuote`}>
+                                <NavLink className="cardLinks" to={`/${contact.id}/EditQuote`}>
                                     Edit Quote
                                 </NavLink>
                             </button>
@@ -70,4 +73,4 @@ const Quotes: React.FC = () => {
     );
 };
 
-export default Quotes;
+export default Contacts;

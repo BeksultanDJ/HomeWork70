@@ -13,7 +13,7 @@ const Toolbar: React.FC = () => {
                         <nav>
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <NavLink className="navLinks" to="/NewQuotes">Add new contact</NavLink>
+                                    <NavLink className="navLinks" to="/NewContacts">Add new contact</NavLink>
                                 </li>
                             </ul>
                         </nav>

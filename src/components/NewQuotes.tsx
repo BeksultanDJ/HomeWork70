@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import {NavLink} from "react-router-dom";
 
-const NewQuotes = () => {
+const NewContacts = () => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
@@ -66,4 +66,4 @@ const NewQuotes = () => {
     );
 };
 
-export default NewQuotes;
+export default NewContacts;
