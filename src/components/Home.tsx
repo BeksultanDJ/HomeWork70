@@ -64,7 +64,7 @@ const Contacts: React.FC = () => {
                 {filteredContacts.map((contact) => (
                     <div className="contactCard" onClick={() => openModal(contact)} key={contact.id}>
                         <img src={contact.photo || defaultPhotoUrl} alt={`${contact.name} photo`} />
-                        <p>{contact.name}</p>
+                        <h2>{contact.name}</h2>
                     </div>
                 ))}
             </div>
@@ -75,18 +75,18 @@ const Contacts: React.FC = () => {
                         <div>
                             <img src={selectedContact.photo || defaultPhotoUrl} alt={`${selectedContact.name} photo`} />
                         </div>
-                        <div>
-                            <p>{selectedContact.name}</p>
-                            <p>{selectedContact.phone}</p>
-                            <p>{selectedContact.email}</p>
+
+                        <div className="contactInfo">
+                            <h3>{selectedContact.name}</h3>
+                            <a href="#">{selectedContact.phone}</a>
+                            <a href="#">{selectedContact.email}</a>
                         </div>
-                        <div>
+
+                        <div className="modalBtns">
                             <button onClick={() => handleDelete(selectedContact.id)}>Удалить</button>
-                            <button className="cardBtn">
-                                <NavLink className="cardLinks" to={`/${selectedContact.id}/EditContact`}>
-                                    Edit Quote
-                                </NavLink>
-                            </button>
+                            <NavLink className="cardLinks" to={`/${selectedContact.id}/EditContact`}>
+                                <button className="cardBtn">Edit Contact</button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
