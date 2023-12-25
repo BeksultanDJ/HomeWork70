@@ -80,6 +80,7 @@ textarea {
 
 .quoteCard {
   border: 1px solid black;
+  max-width: 400px;
   border-radius: 8px;
   padding: 15px;
   display: flex;
@@ -88,8 +89,9 @@ textarea {
   margin: 0 0 15px 0;
 }
 
-p {
+.cardInfo p {
   margin: 0;
+  font-size: 20px;
 }
 
 .cardBtn {
